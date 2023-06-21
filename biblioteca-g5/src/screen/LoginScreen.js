@@ -31,7 +31,7 @@ export const LoginScreen = () => {
                 value={senha}
                 placeholder="Senha"
             />
-            <TouchableOpacity onPress={Alert('sai')}>
+            <TouchableOpacity>
                 <Text>Entrar</Text>
             </TouchableOpacity>
 
