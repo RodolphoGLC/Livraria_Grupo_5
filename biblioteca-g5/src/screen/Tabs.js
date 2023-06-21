@@ -10,15 +10,15 @@ export default function Tabs() {
             <Tab.Navigator
                 initialRouteName="Livraria"
                 screenOptions={{
-                    tabBarActiveTintColor: '#fff',
+                    tabBarActiveTintColor: '#ECE5C7',
                     tabBarShowLabel: false,
                     tabBarStyle: {
-                        backgroundColor: "#000",
+                        backgroundColor: "#116A7B",
                         borderTopWidth: 0,
                         height: 60
                     },
                     headerStyle: {
-                        backgroundColor: "#000",
+                        backgroundColor: "#116A7B",
                         borderBottomWidth: 0,
                     },
                     headerTintColor: "#fff"
