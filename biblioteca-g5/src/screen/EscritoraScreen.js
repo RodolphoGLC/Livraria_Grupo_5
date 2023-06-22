@@ -3,7 +3,7 @@ import { AxiosInstance } from '../api/AxiosInstance';
 import { DataContext } from '../context/DataContext';
 import { useContext } from 'react';
 
-export const EscritoraScreen = ({ navigation,route }) => {
+export const EscritoraScreen = ({ navigation, route }) => {
 
     const { dadosUsuario } = useContext(DataContext);
 
@@ -14,15 +14,16 @@ export const EscritoraScreen = ({ navigation,route }) => {
 
         await AxiosInstance.get(
             `livros/${livro.codigoLivro}`,
-            {headers: {"Authorization" : `Bearer ${dadosUsuario?.token}`}}
+            { headers: { "Authorization": `Bearer ${dadosUsuario?.token}` } }
         ).then(response => {
             const livroResponse = response.data;
 
             const livroObj = {
                 img: livroResponse.imagem,
                 nomeLivro: livroResponse.nomeLivro,
-                autor: livroResponse.autorDTO.nomeAutor,
+                autorDTO: livroResponse.autorDTO,
                 editoraDTO: livroResponse.editoraDTO,
+                dataLancamento: livroResponse.dataLancamento,
             }
 
             navigation.navigate('Livro', livroObj);
@@ -72,14 +73,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start',
         marginTop: 50,
-        marginBottom: 20,
+        marginBottom: 50,
         marginRight: 'auto',
         marginLeft: 'auto',
         width: '60%',
-        boxShadow: '1px 1px 5px #000',
         padding: 10,
-        borderRadius: 5,
-        backgroundColor: '#ECE5C7'
+        borderRadius: 30,
+        backgroundColor: '#ECE5C7',
+        shadowColor: '#5e5c50',
+        shadowOffset: {
+            width: 25,
+            height: 25,
+        },
+        shadowOpacity: 1,
+        shadowRadius: 40,
+        elevation: 3,
     },
 
     logoEditora: {

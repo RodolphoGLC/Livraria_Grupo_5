@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 
-const LivroScreen = ({ navigation,route }) => {
+const LivroScreen = ({ navigation, route }) => {
   const livroData = route.params
 
   const dataLancamento = new Date(livroData.dataLancamento);
@@ -24,7 +24,6 @@ const LivroScreen = ({ navigation,route }) => {
           <Text style={styles.editoraLivro}>{livroData.editoraDTO?.nomeEditora}</Text>
           <Text style={styles.codigoLivro}>{livroData.codigoLivro}</Text>
           <Text style={styles.dataLancamento}>{dataFormatada}</Text>
-
         </View>
       </View>
 
@@ -43,7 +42,7 @@ const styles = StyleSheet.create({
   cardLivro: {
     flexDirection: 'column',
     alignItems: 'center',
-    padding: 10,
+    padding: 15,
     marginVertical: 10,
     borderRadius: 30,
     backgroundColor: '#ECE5C7',
