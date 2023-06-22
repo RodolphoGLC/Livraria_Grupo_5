@@ -34,7 +34,7 @@ export default function LivrosContainer() {
                 contentContainerStyle={styles.teste}
                 data={dataLivros}
                 renderItem={({ item }) =>
-                    item.editoraDTO.codigoEditora == 4 ? (
+                    item.editoraDTO.codigoEditora == 1 ? (
                         <Card containerStyle={styles.cardContainer}>
                             <Card.Image
                                 style={styles.imagem}

@@ -1,18 +1,20 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { StyleSheet, FlatList, View, Text, Image } from 'react-native';
-import AxiosInstance from '../../api/AxiosInstance';
-import { DataContext } from '../../context/DataContext'
+import AxiosInstance from '../api/AxiosInstance';
+import { DataContext } from '../context/DataContext'
+//import LivrosContainer from "../components/LivrosContainer"
 
-export const EscritoraScreen = () => {
+export const EscritoraScreen = (item) => {
     const { dadosUsuario } = useContext(DataContext);
 
     const [dadosEscritora, setDadosEscritora] = useState([]);
     const [dadosLivros, setDadosLivros] = useState([]);
 
-    //Get Editora p/ id, espero que o ID venha do navigate
+    const idEditora = item.codigoEditora;
+
     const getEditoraId = async () => {
-        await AxiosInstance.get(`/editoras/${1}`,
-            { headers: { "Authorization": `Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyIiwiaWF0IjoxNjg3Mzc0NjIwLCJ1c2VyIjoie1wiaWRcIjoxLFwidXNlcm5hbWVcIjpcInVzZXJcIixcImVtYWlsXCI6XCJ1c2VyQG1haWwuY29tXCIsXCJyb2xlc1wiOltcIlJPTEVfVVNFUlwiXX0iLCJleHAiOjE2ODc0NjEwMjB9.0oOlmVkuFuGtwsoGdsdS3uwZniS4W-2cdVxVLfiGnG6W_P0KmV3cbFMXIP_P7FZX` } }
+        await AxiosInstance.get(`/editoras/${idEditora}`,
+            { headers: { "Authorization": `Bearer ${dadosUsuario.token}` } }
         ).then(resultado => {
             console.log('Get Editoras: ' + JSON.stringify(resultado.data))
             setDadosEscritora(resultado.data);
@@ -21,10 +23,9 @@ export const EscritoraScreen = () => {
         });
     };
 
-    //Fazer por filtrar pela editora, espero o id vindo do navigate
     const getLivrosEditora = async () => {
-        await AxiosInstance.get(`/livros/por-editora/${2}`,
-            { headers: { "Authorization": `Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyIiwiaWF0IjoxNjg3Mzc0NjIwLCJ1c2VyIjoie1wiaWRcIjoxLFwidXNlcm5hbWVcIjpcInVzZXJcIixcImVtYWlsXCI6XCJ1c2VyQG1haWwuY29tXCIsXCJyb2xlc1wiOltcIlJPTEVfVVNFUlwiXX0iLCJleHAiOjE2ODc0NjEwMjB9.0oOlmVkuFuGtwsoGdsdS3uwZniS4W-2cdVxVLfiGnG6W_P0KmV3cbFMXIP_P7FZX` } }
+        await AxiosInstance.get(`/livros/por-editora/${idEditora}`,
+            { headers: { "Authorization": `Bearer ${dadosUsuario.token}` } }
         ).then((resultado) => {
             setDadosLivros(resultado.data);
             console.log('Get Livros: ' + JSON.stringify(resultado))
@@ -38,18 +39,18 @@ export const EscritoraScreen = () => {
         getLivrosEditora();
     }, []);
 
-    const CardLivro = (item, img) => {
+    const CardLivro = () => {
         <View style={styles.cardLivro}>
             <View style={styles.cardImagem}>
                 <Image
-                    style={styles.logoLivro}
+                    style={styles.imgLivro}
                     source={{ uri: `data:image/png;base64,${img}` }}
                 />
             </View>
             <View style={styles.cardInfo}>
                 <Text style={styles.nomeLivro}>{item.nomeLivro}</Text>
-                <Text style={styles.codigoLivro}>{item.codigoIsbn}</Text>
-                <Text style={styles.dataLivro}>{item.dataLancamento}</Text>
+                <Text style={styles.infoLivro}>{item.codigoIsbn}</Text>
+                <Text style={styles.infoLivro}>{item.dataLancamento}</Text>
             </View>
         </View>
     };
@@ -66,7 +67,7 @@ export const EscritoraScreen = () => {
                 showsVerticalScrollIndicator={false}
                 data={dadosLivros}
                 keyExtractor={item => item.codigoLivro}
-                renderItem={({ item }) => <CardLivro item={item} img={item.imagem} />}
+                renderItem={({ item }) => <CardLivro />}
             />
         </View>
     );
@@ -85,8 +86,36 @@ const styles = StyleSheet.create({
         height: 100,
     },
 
+    nomeEditora: {
+
+    },
+
     imagemLivro: {
         width: 100,
         height: 100,
-    }
+    },
+
+    cardLivro: {
+
+    },
+
+    cardImagem: {
+
+    },
+
+    imgLivro: {
+
+    },
+
+    cardInfo: {
+
+    },
+
+    nomeLivro: {
+
+    },
+
+    infoLivro: {
+
+    },
 });
