@@ -1,13 +1,14 @@
-import { View, FlatList } from "react-native";
 import { Card } from '@rneui/themed';
-import { Text, StyleSheet } from "react-native";
-import { useState, useEffect } from "react";
-import { AxiosInstance } from "../api/AxiosInstance"
+import { useEffect, useState } from "react";
+import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
+import { AxiosInstance } from "../api/AxiosInstance";
+import { useNavigation } from '@react-navigation/native';
 
 export default function LivrosContainer() {
 
     const [dataLivros, setDataLivros] = useState()
 
+    const navigation = useNavigation();
 
     const getLivros = async () => {
         await AxiosInstance.get("/livros",
@@ -34,14 +35,14 @@ export default function LivrosContainer() {
                 contentContainerStyle={styles.teste}
                 data={dataLivros}
                 renderItem={({ item }) =>
-                    item.editoraDTO.codigoEditora == 1 ? (
+                    <TouchableOpacity onPress={() => navigation.navigate('Livro', item)}>
                         <Card containerStyle={styles.cardContainer}>
                             <Card.Image
                                 style={styles.imagem}
                                 source={{ uri: `data:image/jpeg;base64,${item.img}` }}
                             />
                         </Card>
-                    ) : (null)
+                    </TouchableOpacity>
                 }
             />
         </View>
