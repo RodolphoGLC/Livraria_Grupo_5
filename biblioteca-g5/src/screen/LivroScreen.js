@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, View, Text, Image, FlatList } from 'react-native';
 
 
-const LivroScreen = ({ item }) => {
-  console.log("item " + item)
-
-  const [dadosLivros, setDadosLivros] = useState([]);
-  const livroData = item.params
+const LivroScreen = ({ route }) => {
+  const livroData = route.params
 
   return (
     <View style={styles.container}>
