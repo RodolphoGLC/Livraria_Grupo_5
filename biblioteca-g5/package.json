@@ -24,8 +24,7 @@
     "react-native-gesture-handler": "~2.9.0",
     "react-native-reanimated": "~2.14.4",
     "react-native-web": "~0.18.10",
-    "react-dom": "18.2.0",
-
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
