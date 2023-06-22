@@ -1,4 +1,4 @@
-import { View, FlatList, StyleSheet, Image } from "react-native";
+import { View, FlatList, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useState, useEffect } from "react";
 import { AxiosInstance } from "../api/AxiosInstance";
 import { useNavigation } from '@react-navigation/native';
@@ -28,7 +28,7 @@ export default function EditorasContainer() {
 
     const Item = ({ item }) => (
         <View style={styles.item}>
-            <TouchableOpacity onPress={() => navigation.navigate('Editora', item)}>
+            <TouchableOpacity onPress={() => navigation.navigate('EscritoraScreen', item)}>
                 <Image
                     style={styles.imagem}
                     source={{ uri: `data:image/png;base64,${item.img}` }}
