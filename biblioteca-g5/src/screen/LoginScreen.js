@@ -54,8 +54,8 @@ export const LoginScreen = ({ navigation }) => {
                 placeholder="Senha"
             />
 
-            <TouchableOpacity style={styles.fora} onPress={handleLogin}>
-                <Text style={styles.button}>Entrar</Text>
+            <TouchableOpacity style={styles.button} onPress={handleLogin}>
+                <Text style={styles.txtButton}>Entrar</Text>
             </TouchableOpacity>
 
         </View>
@@ -84,20 +84,20 @@ const styles = StyleSheet.create({
         padding: 10,
         backgroundColor: '#cdc2ae',
     },
-    fora: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
     button: {
         borderRadius: 15,
         backgroundColor: '#000',
         color: '#fff',
-        height: 30,
         width: 150,
-        textAlign: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
         textAlignVertical: 'center',
         fontSize: 16,
         margin: 10,
+        paddingTop: 5,
+        paddingBottom: 5,
     },
+    txtButton: {
+      color: '#fff',
+    }
 });
