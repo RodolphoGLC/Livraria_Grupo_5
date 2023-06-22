@@ -25,10 +25,10 @@ export const DataProvider = ({children}) => {
     }
 
     return (
-        <DataContext.Provider value={({
+        <DataContext.Provider value={{
             dadosUsuario,
             armazenarDadosUsuario
-        })}>
+        }}>
             {children}
         </DataContext.Provider>
     )

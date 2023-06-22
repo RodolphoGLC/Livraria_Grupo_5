@@ -1,6 +1,6 @@
 import { View, FlatList, StyleSheet, Image } from "react-native";
 import { useState, useEffect } from "react";
-import AxiosInstance from "../api/AxiosInstance";
+import { AxiosInstance } from "../api/AxiosInstance";
 
 export default function EditorasContainer() {
 

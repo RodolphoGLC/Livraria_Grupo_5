@@ -1,14 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import { LoginScreen } from './src/screen/LoginScreen';
 import Tabs from './src/screen/Tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { DataProvider } from './src/context/DataContext';
+
+const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <LoginScreen />
-    </NavigationContainer>
+    <DataProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Home" component={Tabs} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </DataProvider>
+
   );
 }
 
