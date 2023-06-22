@@ -1,21 +1,21 @@
 import { Card } from '@rneui/themed';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
 import { AxiosInstance } from "../api/AxiosInstance";
 import { useNavigation } from '@react-navigation/native';
+import { DataContext } from '../context/DataContext';
 
 export default function LivrosContainer() {
 
     const [dataLivros, setDataLivros] = useState()
+    const { dadosUsuario } = useContext(DataContext);
 
     const navigation = useNavigation();
 
     const getLivros = async () => {
         await AxiosInstance.get("/livros",
             {
-                headers: {
-                    "Authorization": `Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyIiwiaWF0IjoxNjg3Mzg0NDA0LCJ1c2VyIjoie1wiaWRcIjoxLFwidXNlcm5hbWVcIjpcInVzZXJcIixcImVtYWlsXCI6XCJ1c2VyQG1haWwuY29tXCIsXCJyb2xlc1wiOltcIlJPTEVfVVNFUlwiXX0iLCJleHAiOjE2ODc0NzA4MDR9.gjuuLYVucnfu_dMgkVEi4SLFBrl2HpYF22Vez0Dum94iin6TtJ3mrEC6I_fcPKJa`
-                }
+                headers: {"Authorization" : `Bearer ${dadosUsuario?.token}`}
             }).then(result => {
                 setDataLivros(result.data)
             }).catch(error => {

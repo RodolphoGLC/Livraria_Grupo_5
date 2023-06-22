@@ -12,11 +12,19 @@ const App = () => {
   return (
     <DataProvider>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={
+            {
+              headerStyle: {
+                backgroundColor: "#116A7B",
+                borderBottomWidth: 0,
+              },
+              headerTintColor: "#fff"
+            }}>
+          <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
           <Stack.Screen name="Livraria" component={Tabs} />
-          <Stack.Screen options={{headerShown: false}} name="Login" component={LoginScreen} />
           <Stack.Screen name="Livro" component={LivroScreen} />
-          <Stack.Screen options={{ headerShown: false }} name="EscritoraScreen" component={EscritoraScreen} />
+          <Stack.Screen name="EscritoraScreen" component={EscritoraScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </DataProvider>

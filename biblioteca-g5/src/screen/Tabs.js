@@ -17,11 +17,7 @@ export default function Tabs() {
                         borderTopWidth: 0,
                         height: 60
                     },
-                    headerStyle: {
-                        backgroundColor: "#116A7B",
-                        borderBottomWidth: 0,
-                    },
-                    headerTintColor: "#fff"
+                    headerShown: false,
                 }}
             >
                 <Tab.Screen

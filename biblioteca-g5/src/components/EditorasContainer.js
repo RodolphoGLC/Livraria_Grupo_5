@@ -2,10 +2,13 @@ import { View, FlatList, StyleSheet, Image, TouchableOpacity } from "react-nativ
 import { useState, useEffect } from "react";
 import { AxiosInstance } from "../api/AxiosInstance";
 import { useNavigation } from '@react-navigation/native';
+import { DataContext } from '../context/DataContext';
+import { useContext } from 'react';
 
 export default function EditorasContainer() {
 
     const [dataEditora, setDataEditora] = useState();
+    const { dadosUsuario } = useContext(DataContext);
 
     const navigation = useNavigation();
 
@@ -16,9 +19,7 @@ export default function EditorasContainer() {
     const getEditoras = async () => {
         await AxiosInstance.get("/editoras",
             {
-                headers: {
-                    "Authorization": `Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyIiwiaWF0IjoxNjg3Mzg1ODg5LCJ1c2VyIjoie1wiaWRcIjoxLFwidXNlcm5hbWVcIjpcInVzZXJcIixcImVtYWlsXCI6XCJ1c2VyQG1haWwuY29tXCIsXCJyb2xlc1wiOltcIlJPTEVfVVNFUlwiXX0iLCJleHAiOjE2ODc0NzIyODl9.YyiiPNs8gePexq7P5Fpqy-9Z-l5ee75uGCtxpITy7gJNTiHGmA6xFvEqqPML1Bt4`
-                }
+                headers: { "Authorization": `Bearer ${dadosUsuario?.token}` }
             }).then(result => {
                 setDataEditora(result.data)
             }).catch(error => {
