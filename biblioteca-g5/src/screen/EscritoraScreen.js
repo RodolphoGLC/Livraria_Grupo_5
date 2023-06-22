@@ -1,9 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { StyleSheet, FlatList, View, Text, Image } from 'react-native';
-import AxiosInstance from '../api/AxiosInstance';
+import AxiosInstance from '../../api/AxiosInstance';
+import { DataContext } from '../../context/DataContext'
 
 export const EscritoraScreen = () => {
-    //const { dadosUsuario } = useContext(DataContext);
+    const { dadosUsuario } = useContext(DataContext);
 
     const [dadosEscritora, setDadosEscritora] = useState([]);
     const [dadosLivros, setDadosLivros] = useState([]);
@@ -20,13 +21,13 @@ export const EscritoraScreen = () => {
         });
     };
 
-    const getLivros = async () => {
-        const response = await AxiosInstance.get(`/livros`,
+    //Fazer por filtrar pela editora, espero o id vindo do navigate
+    const getLivrosEditora = async () => {
+        await AxiosInstance.get(`/livros/por-editora/${2}`,
             { headers: { "Authorization": `Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyIiwiaWF0IjoxNjg3Mzc0NjIwLCJ1c2VyIjoie1wiaWRcIjoxLFwidXNlcm5hbWVcIjpcInVzZXJcIixcImVtYWlsXCI6XCJ1c2VyQG1haWwuY29tXCIsXCJyb2xlc1wiOltcIlJPTEVfVVNFUlwiXX0iLCJleHAiOjE2ODc0NjEwMjB9.0oOlmVkuFuGtwsoGdsdS3uwZniS4W-2cdVxVLfiGnG6W_P0KmV3cbFMXIP_P7FZX` } }
         ).then((resultado) => {
-            const livrosEditora = resultado.data.filter(objeto => objeto.editoraDTO.codigoEditora);
-            setDadosLivros(livrosEditora);
-            console.log('Get Livros: ' + JSON.stringify(livrosEditora))
+            setDadosLivros(resultado.data);
+            console.log('Get Livros: ' + JSON.stringify(resultado))
         }).catch((error) => {
             console.log("Erro ao recuperar editoras: " + error);
         });
@@ -34,15 +35,15 @@ export const EscritoraScreen = () => {
 
     useEffect(() => {
         getEditoraId();
-        getLivros();
+        getLivrosEditora();
     }, []);
 
-    const CardLivro = (item, uri) => {
+    const CardLivro = (item, img) => {
         <View style={styles.cardLivro}>
             <View style={styles.cardImagem}>
                 <Image
                     style={styles.logoLivro}
-                    source={{ uri: `data:image/png;base64,${uri}` }}
+                    source={{ uri: `data:image/png;base64,${img}` }}
                 />
             </View>
             <View style={styles.cardInfo}>
@@ -65,14 +66,11 @@ export const EscritoraScreen = () => {
                 showsVerticalScrollIndicator={false}
                 data={dadosLivros}
                 keyExtractor={item => item.codigoLivro}
-                renderItem={({ item }) => <CardLivro item={item} uri={item.imagem} />}
+                renderItem={({ item }) => <CardLivro item={item} img={item.imagem} />}
             />
         </View>
     );
 }
-
-//Receber os dados de editora, 
-
 
 const styles = StyleSheet.create({
     container: {
