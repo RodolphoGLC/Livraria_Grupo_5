@@ -1,10 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet,  View, Text, TextInput, TouchableOpacity } from 'react-native';
-
 import { useState, useContext } from 'react';
 import { AxiosInstance } from '../api/AxiosInstance';
 import { DataContext } from '../context/DataContext';
+
 
 export const LoginScreen = ({ navigation }) => {
 
@@ -53,6 +53,7 @@ export const LoginScreen = ({ navigation }) => {
                 value={senha}
                 placeholder="Senha"
             />
+
             <TouchableOpacity style={styles.fora} onPress={handleLogin}>
                 <Text style={styles.button}>Entrar</Text>
             </TouchableOpacity>
