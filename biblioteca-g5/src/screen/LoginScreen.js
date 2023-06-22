@@ -27,7 +27,7 @@ export const LoginScreen = ({navigation}) => {
             var jwtToken =resultado.data;
             armazenarDadosUsuario(jwtToken["accessToken"]);
     
-            navigation.navigate('Home')
+            navigation.navigate('Livraria')
     
           } else {
             console.log('erro');
@@ -69,27 +69,34 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     titulo: {
-        fontSize: 30,
+        fontSize: 40,
         fontWeight: 'bold',
         marginVertical: 10,
         color: '#000'
     },
     input: {
         height: 40,
-        width: 200,
+        width: 270,
         margin: 12,
         borderWidth: 1,
-        borderRadius: 9,
+        borderRadius: 15,
         padding: 10,
-        backgroundColor: '#cdc2ae'
-    },
-    
-    button: {
-        borderRadius: 5,
         backgroundColor: '#cdc2ae',
-        height: 20,
-        width: 60,
+    },
+    fora: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    button: {
+        borderRadius: 15,
+        backgroundColor: '#000',
+        color: '#fff',
+        height: 30,
+        width: 150,
         textAlign: 'center',
-        justifyContent: 'center',
+        textAlignVertical: 'center',
+        fontSize: 16,
+        margin: 10,
     },
 });

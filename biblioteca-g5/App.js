@@ -4,11 +4,15 @@ import { LoginScreen } from './src/screen/LoginScreen';
 import Tabs from './src/screen/Tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
+import { DataProvider } from './src/context/DataContext';
+
 const App = () => {
   return (
-    <NavigationContainer>
-      <Tabs />
-    </NavigationContainer>
+    <DataProvider>
+      <NavigationContainer>
+        <Tabs />
+      </NavigationContainer>
+    </DataProvider>
   );
 }
 
