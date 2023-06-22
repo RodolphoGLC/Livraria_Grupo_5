@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     imagem: {
         width: 70,
         height: 70,
-        borderRadius: 3
+        borderRadius: '50%'
     },
     list: {
         gap: 30,
