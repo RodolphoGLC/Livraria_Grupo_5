@@ -2,7 +2,7 @@ import { View, FlatList } from "react-native";
 import { Card } from '@rneui/themed';
 import { Text, StyleSheet } from "react-native";
 import { useState, useEffect } from "react";
-import AxiosInstance from "../api/AxiosInstance"
+import {AxiosInstance} from "../api/AxiosInstance"
 
 export default function LivrosContainer() {
 

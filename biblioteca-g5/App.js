@@ -7,7 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 const App = () => {
   return (
     <NavigationContainer>
-      <LoginScreen />
+      <Tabs />
     </NavigationContainer>
   );
 }
