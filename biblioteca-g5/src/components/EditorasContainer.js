@@ -29,7 +29,7 @@ export default function EditorasContainer() {
 
     const Item = ({ item }) => (
         <View style={styles.item}>
-            <TouchableOpacity onPress={() => navigation.navigate('EscritoraScreen', item)}>
+            <TouchableOpacity onPress={() => navigation.navigate('Editora', item)}>
                 <Image
                     style={styles.imagem}
                     source={{ uri: `data:image/png;base64,${item.img}` }}
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     imagem: {
         width: 70,
         height: 70,
-        borderRadius: '50%'
+        borderRadius: 50
     },
     list: {
         gap: 30,

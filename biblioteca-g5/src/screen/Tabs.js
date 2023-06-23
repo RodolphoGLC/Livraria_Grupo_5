@@ -21,7 +21,7 @@ export default function Tabs() {
                 }}
             >
                 <Tab.Screen
-                    name="Livraria"
+                    name="Início"
                     component={Home}
                     options={{
                         tabBarIcon: ({ color, size }) => (
@@ -31,7 +31,7 @@ export default function Tabs() {
                 />
                 <Tab.Screen
                     name="Editoras"
-                    component={LoginScreen}
+                    component={Home}
                     options={{
                         tabBarIcon: ({ color, size }) => (
                             <MaterialIcons name="search" color={color} size={size} />
@@ -40,7 +40,7 @@ export default function Tabs() {
                 />
                 <Tab.Screen
                     name="Favoritos"
-                    component={LoginScreen}
+                    component={Home}
                     options={{
                         tabBarIcon: ({ color, size }) => (
                             <MaterialCommunityIcons name="heart" color={color} size={size} />
@@ -49,7 +49,7 @@ export default function Tabs() {
                 />
                 <Tab.Screen
                     name="Carrinho"
-                    component={LoginScreen}
+                    component={Home}
                     options={{
                         tabBarIcon: ({ color, size }) => (
                             <MaterialCommunityIcons name="cart" color={color} size={size} />

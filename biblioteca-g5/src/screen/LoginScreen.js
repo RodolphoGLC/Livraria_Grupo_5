@@ -94,8 +94,8 @@ const styles = StyleSheet.create({
         textAlignVertical: 'center',
         fontSize: 16,
         margin: 10,
-        paddingTop: 5,
-        paddingBottom: 5,
+        paddingTop: 10,
+        paddingBottom: 10,
     },
     txtButton: {
       color: '#fff',

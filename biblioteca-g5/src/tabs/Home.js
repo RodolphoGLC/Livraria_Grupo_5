@@ -8,18 +8,18 @@ import { Entypo } from '@expo/vector-icons';
 
 export default function Home() {
     return (
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView style={{backgroundColor: '#C2DEDC'}} showsVerticalScrollIndicator={false}>
             <View style={styles.container}>
                 <EditorasContainer></EditorasContainer>
 
                 <View style={styles.wrapperTitle}>
-                    <MaterialCommunityIcons name="bookshelf" size={20} color="black" />
+                    <MaterialCommunityIcons name="bookshelf" size={20} color="#116A7B" />
                     <Text style={styles.title}>Livros</Text></View>
 
                 <LivrosContainer></LivrosContainer>
 
                 <View style={styles.wrapperTitle}>
-                    <Entypo name="new" size={20} color="black" />
+                    <Entypo name="new" size={20} color="#116A7B" />
                     <Text style={styles.title}>Destaque</Text></View>
 
                 <Card containerStyle={styles.highlight}>
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#C2DEDC"
     },
     title: {
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: 400
     },
     highlight: {
@@ -77,9 +77,9 @@ const styles = StyleSheet.create({
     wrapperTitle: {
         borderBottomWidth: 2,
         borderBottomColor: "#116a7b",
-        width: '50%',
+        width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
-        gap: 5
+        gap: 5,
     }
 })

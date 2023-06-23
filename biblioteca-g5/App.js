@@ -24,7 +24,7 @@ const App = () => {
           <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
           <Stack.Screen name="Livraria" component={Tabs} />
           <Stack.Screen name="Livro" component={LivroScreen} />
-          <Stack.Screen name="EscritoraScreen" component={EscritoraScreen} />
+          <Stack.Screen name="Editora" component={EscritoraScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </DataProvider>
