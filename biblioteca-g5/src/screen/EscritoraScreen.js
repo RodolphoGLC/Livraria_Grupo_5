@@ -80,12 +80,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#ECE5C7',
         shadowColor: '#5e5c50',
         shadowOffset: {
-            width: 25,
-            height: 25,
+            width: 10,
+            height: 10,
         },
         shadowOpacity: 1,
-        shadowRadius: 40,
-        elevation: 3,
+        shadowRadius: 10,
+        elevation: 5,
     },
 
     logoEditora: {
